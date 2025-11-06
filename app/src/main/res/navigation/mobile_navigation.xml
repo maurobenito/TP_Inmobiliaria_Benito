@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_home">
+
+    <!-- 🏠 Inicio -->
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.inmobiliariabenito.ui.inicio.HomeFragment"
+        android:label="@string/inicio"
+        tools:layout="@layout/fragment_home" />
+
+    <!-- 🏘️ Inmuebles -->
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.inmobiliariabenito.ui.inmueble.InmuebleFragment"
+        android:label="@string/inmuebles"
+        tools:layout="@layout/fragment_inmueble">
+        <action
+            android:id="@+id/action_nav_gallery_to_detalleInmuebleFragment"
+            app:destination="@id/detalleInmuebleFragment" />
+    </fragment>
+
+    <!-- 👤 Inquilinos -->
+    <fragment
+        android:id="@+id/nav_inquilino"
+        android:name="com.example.inmobiliariabenito.ui.inquilino.InquilinoFragment"
+        android:label="Inquilinos"
+        tools:layout="@layout/fragment_inquilino" />
+
+    <!-- 📜 Contratos -->
+    <fragment
+        android:id="@+id/nav_contrato"
+        android:name="com.example.inmobiliariabenito.ui.contrato.ContratoFragment"
+        android:label="Contratos"
+        tools:layout="@layout/fragment_contrato">
+        <action
+            android:id="@+id/action_nav_contrato_to_detalleContratoFragment"
+            app:destination="@id/detalleContratoFragment" />
+    </fragment>
+
+    <!-- 👤 Perfil -->
+    <fragment
+        android:id="@+id/nav_perfil"
+        android:name="com.example.inmobiliariabenito.ui.perfil.PerfilFragment"
+        android:label="Perfil"
+        tools:layout="@layout/fragment_perfil" />
+
+    <!-- ➕ Crear Inmueble -->
+    <fragment
+        android:id="@+id/nav_inmueble_crear"
+        android:name="com.example.inmobiliariabenito.ui.inmueble.CrearInmuebleFragment"
+        android:label="Nuevo Inmueble"
+        tools:layout="@layout/fragment_crear_inmueble" />
+
+    <!-- 🚪 Salir -->
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.inmobiliariabenito.ui.salir.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <!-- 🏡 Detalle Inmueble -->
+    <fragment
+        android:id="@+id/detalleInmuebleFragment"
+        android:name="com.example.inmobiliariabenito.ui.inmueble.DetalleInmuebleFragment"
+        android:label="Detalle del Inmueble"
+        tools:layout="@layout/fragment_detalle_inmueble">
+        <action
+            android:id="@+id/action_detalleInmuebleFragment_to_nav_gallery"
+            app:destination="@id/nav_gallery" />
+    </fragment>
+
+    <!-- 📑 Detalle Contrato -->
+    <fragment
+        android:id="@+id/detalleContratoFragment"
+        android:name="com.example.inmobiliariabenito.ui.contrato.DetalleContratoFragment"
+        android:label="Detalle del Contrato"
+        tools:layout="@layout/fragment_detalle_contrato">
+        <action
+            android:id="@+id/action_detalleContratoFragment_to_nav_detalle_inquilino"
+            app:destination="@id/nav_detalle_inquilino" />
+    </fragment>
+
+    <!-- 👥 Detalle Inquilino -->
+    <fragment
+        android:id="@+id/nav_detalle_inquilino"
+        android:name="com.example.inmobiliariabenito.ui.inquilino.DetalleInquilinoFragment"
+        android:label="Detalle del Inquilino"
+        tools:layout="@layout/fragment_detalle_inquilino" />
+
+    <!-- 🔐 Login -->
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.example.inmobiliariabenito.ui.login.LoginActivity"
+        android:label="Login"
+        tools:layout="@layout/activity_login" />
+
+</navigation>
