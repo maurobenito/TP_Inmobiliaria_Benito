@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:layout_marginBottom="8dp">
+
+    <TextView
+        android:id="@+id/tvFechaPago"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fecha: 10/04/2024"
+        android:textSize="16sp"
+        android:textColor="?android:textColorPrimary" />
+
+    <TextView
+        android:id="@+id/tvMontoPago"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Monto: $23.00"
+        android:textSize="16sp"
+        android:textColor="?android:textColorPrimary" />
+
+    <TextView
+        android:id="@+id/tvDetallePago"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Detalle: Mes abril"
+        android:textSize="16sp"
+        android:textColor="?android:textColorSecondary" />
+
+    <TextView
+        android:id="@+id/tvEstadoPago"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Estado: Pendiente"
+        android:textSize="16sp"
+        android:textColor="?android:textColorSecondary" />
+
+</LinearLayout>
