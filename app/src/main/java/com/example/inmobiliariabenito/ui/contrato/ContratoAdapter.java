@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,10 +48,14 @@ public class ContratoAdapter extends RecyclerView.Adapter<ContratoAdapter.ViewHo
         Inmueble  inmActual = listaInmuebles.get(position);
         holder.direccion.setText(inmActual.getDireccion());
         holder.monto.setText(inmActual.getValor()+"");
+
         Glide.with(context)
                 .load(ApiClient.BASE_URL + inmActual.getImagen())
                 .placeholder(null)
-                .error("null");
+                .error("null")
+                .into(holder.portada);
+
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,12 +75,14 @@ public class ContratoAdapter extends RecyclerView.Adapter<ContratoAdapter.ViewHo
 
     public static class ViewHolderContrato extends RecyclerView.ViewHolder {
         private TextView direccion, monto;
-
+        private ImageView portada;
         public ViewHolderContrato(@NonNull View itemView) {
             super(itemView);
             direccion = itemView.findViewById(R.id.tvDireccion);
-            monto = itemView.findViewById(R.id.tvValor);
+            monto = itemView.findViewById(R.id.tvMonto);
+            portada = itemView.findViewById(R.id.imgInmueble);
 
         }
     }
+
 }

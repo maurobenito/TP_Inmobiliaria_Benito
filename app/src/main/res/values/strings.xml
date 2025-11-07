@@ -20,4 +20,11 @@
     <string name="Inmuebles" />
     <string name="inmuebles">Inmuebles</string>
     <string name="superficie_m">Superficie (m²)</string>
+    <string name="ver_inquilino">Ver Inquilino</string>
+    <string name="inmueble_asociado">Inmueble asociado:</string>
+    <string name="estado">Estado:</string>
+    <string name="monto_mensual">Monto mensual:</string>
+    <string name="fecha_de_finalizaci_n">Fecha de finalización:</string>
+    <string name="fecha_de_inicio">Fecha de inicio:</string>
+    <string name="detalle_del_contrato">Detalle del Contrato</string>
 </resources>

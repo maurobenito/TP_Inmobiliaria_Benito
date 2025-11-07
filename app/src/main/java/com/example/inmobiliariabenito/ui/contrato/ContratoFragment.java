@@ -27,9 +27,9 @@ public class ContratoFragment extends Fragment {
 
         vm = new ViewModelProvider(this).get(ContratoViewModel.class);
 
-        // Observa los inmuebles con contrato activo
+
         vm.getListaInmueblesConContrato().observe(getViewLifecycleOwner(), inmuebles -> {
-            InmuebleAdapter adapter = new InmuebleAdapter(inmuebles, getContext(), getLayoutInflater());
+            ContratoAdapter adapter = new ContratoAdapter(inmuebles, getContext(), getLayoutInflater());
             GridLayoutManager glm = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
             binding.listaContratos.setLayoutManager(glm);
             binding.listaContratos.setAdapter(adapter);

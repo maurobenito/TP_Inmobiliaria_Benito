@@ -1,25 +1,58 @@
+
 package com.example.inmobiliariabenito.ui.inquilino;
 
+import android.app.Application;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-import com.example.inmobiliariabenito.modelo.Inquilino;
 
-public class DetalleInquilinoViewModel extends ViewModel {
+import com.example.inmobiliariabenito.modelo.Contrato;
+import com.example.inmobiliariabenito.modelo.Inmueble;
+import com.example.inmobiliariabenito.request.ApiClient;
 
-    private MutableLiveData<Inquilino> inquilinoMutableLiveData = new MutableLiveData<>();
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+public class DetalleInquilinoViewModel extends AndroidViewModel {
 
-    public LiveData<Inquilino> getInquilinoMutableLiveData() {
-        return inquilinoMutableLiveData;
+    private MutableLiveData<Contrato> contrato;
+    private Context context;
+
+    public DetalleInquilinoViewModel(@NonNull Application application) {
+        super(application);
+        context = application.getApplicationContext();
     }
 
-    public void cargarInquilino(Bundle bundle) {
-        if (bundle != null) {
-            Inquilino inquilino = (Inquilino) bundle.getSerializable("inquilino");
-            if (inquilino != null) {
-                inquilinoMutableLiveData.setValue(inquilino);
-            }
+    public LiveData<Contrato> getContrato() {
+        if (contrato == null) {
+            contrato = new MutableLiveData<>();
         }
+        return contrato;
+    }
+
+    public void obtenerContratoPorInmueble(Bundle bundle) {
+        Inmueble inmueble = bundle.getSerializable("inmueble", Inmueble.class);
+        ApiClient.InmoServicio api = ApiClient.getInmoServicio();
+        String token = "Bearer " + ApiClient.leerToken(getApplication());
+        Call<Contrato> call = api.getContratoPorInmueble(token, inmueble.getIdInmueble());
+        call.enqueue(new Callback<Contrato>() {
+            @Override
+            public void onResponse(Call<Contrato> call, Response<Contrato> response) {
+                if (response.isSuccessful()) {
+                    contrato.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Contrato> call, Throwable t) {
+                Log.e("API", "Error al obtener contrato", t);
+            }
+        });
     }
 }

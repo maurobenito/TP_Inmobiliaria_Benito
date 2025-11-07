@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         TextView tvUsuario = headerView.findViewById(R.id.tvUsuario);
         tvUsuario.setText("Bienvenido, " + usuario);
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_perfil, R.id.nav_inquilino, R.id.nav_contrato)
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_perfil,  R.id.nav_contrato)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -68,4 +68,5 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
 }

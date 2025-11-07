@@ -1,3 +1,4 @@
+
 package com.example.inmobiliariabenito.ui.contrato;
 
 import android.app.Application;
@@ -35,15 +36,16 @@ public class DetalleContratoViewModel extends AndroidViewModel {
         return contrato;
     }
 
-    public void obtenerContratoPorInmueble(Bundle idInmueble) {
+    public void obtenerContratoPorInmueble(Bundle bundle) {
+        Inmueble inmueble = bundle.getSerializable("inmueble", Inmueble.class);
         ApiClient.InmoServicio api = ApiClient.getInmoServicio();
         String token = "Bearer " + ApiClient.leerToken(getApplication());
-        Call<Contrato> call = api.getContratoPorInmueble(token, idInmueble.getInt("idInmueble"));
+        Call<Contrato> call = api.getContratoPorInmueble(token, inmueble.getIdInmueble());
         call.enqueue(new Callback<Contrato>() {
             @Override
             public void onResponse(Call<Contrato> call, Response<Contrato> response) {
                 if (response.isSuccessful()) {
-                    contrato.setValue(response.body());
+                    contrato.postValue(response.body());
                 }
             }
 

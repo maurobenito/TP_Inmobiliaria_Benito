@@ -14,6 +14,7 @@
         android:gravity="center_horizontal"
         android:padding="8dp">
 
+        <!-- Título -->
         <TextView
             android:id="@+id/tvInquilino"
             android:layout_width="wrap_content"
@@ -23,50 +24,90 @@
             android:textStyle="bold"
             android:layout_marginBottom="16dp" />
 
+        <!-- Nombre -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre:"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@android:color/holo_blue_dark" />
+
         <TextView
             android:id="@+id/etNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre:"
+            android:text="---"
             android:textSize="16sp"
-            android:textColor="?android:textColorPrimary"
-            android:layout_marginTop="8dp" />
+            android:layout_marginBottom="8dp" />
+
+        <!-- Apellido -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Apellido:"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@android:color/holo_blue_dark" />
 
         <TextView
             android:id="@+id/etApellido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Apellido:"
+            android:text="---"
             android:textSize="16sp"
-            android:textColor="?android:textColorPrimary"
-            android:layout_marginTop="8dp" />
+            android:layout_marginBottom="8dp" />
+
+        <!-- DNI -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DNI:"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@android:color/holo_blue_dark" />
 
         <TextView
             android:id="@+id/etDni"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="DNI:"
+            android:text="---"
             android:textSize="16sp"
-            android:textColor="?android:textColorPrimary"
-            android:layout_marginTop="8dp" />
+            android:layout_marginBottom="8dp" />
+
+        <!-- Teléfono -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Teléfono:"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@android:color/holo_blue_dark" />
 
         <TextView
             android:id="@+id/etTelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Teléfono:"
+            android:text="---"
             android:textSize="16sp"
-            android:textColor="?android:textColorPrimary"
-            android:layout_marginTop="8dp" />
+            android:layout_marginBottom="8dp" />
+
+        <!-- Email -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email:"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@android:color/holo_blue_dark" />
 
         <TextView
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Email:"
+            android:text="---"
             android:textSize="16sp"
-            android:textColor="?android:textColorPrimary"
-            android:layout_marginTop="8dp" />
+            android:layout_marginBottom="16dp" />
 
         <View
             android:layout_width="match_parent"
@@ -74,15 +115,39 @@
             android:background="#CCCCCC"
             android:layout_marginVertical="16dp" />
 
-        <Button
-            android:id="@+id/btnVolver"
-            android:layout_width="wrap_content"
+        <!-- Botones -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Volver"
-            android:layout_marginTop="8dp"
-            android:paddingHorizontal="24dp"
-            android:backgroundTint="?attr/colorPrimary"
-            android:textColor="@android:color/white" />
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btnVerPagos"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Ver Pagos"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@android:color/white"
+                android:paddingHorizontal="16dp" />
+
+            <Button
+                android:id="@+id/btnVolver"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Volver"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="?attr/colorPrimary"
+                android:textColor="@android:color/white"
+                android:paddingHorizontal="16dp"
+                android:drawableStart="@drawable/baseline_arrow_back_24"
+                android:drawablePadding="8dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

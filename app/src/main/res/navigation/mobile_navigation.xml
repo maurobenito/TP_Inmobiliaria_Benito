@@ -12,7 +12,7 @@
         android:label="@string/inicio"
         tools:layout="@layout/fragment_home" />
 
-    <!-- 🏘️ Inmuebles -->
+
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.example.inmobiliariabenito.ui.inmueble.InmuebleFragment"
@@ -23,18 +23,13 @@
             app:destination="@id/detalleInmuebleFragment" />
     </fragment>
 
-    <!-- 👤 Inquilinos -->
-    <fragment
-        android:id="@+id/nav_inquilino"
-        android:name="com.example.inmobiliariabenito.ui.inquilino.InquilinoFragment"
-        android:label="Inquilinos"
-        tools:layout="@layout/fragment_inquilino" />
+
 
     <!-- 📜 Contratos -->
     <fragment
         android:id="@+id/nav_contrato"
         android:name="com.example.inmobiliariabenito.ui.contrato.ContratoFragment"
-        android:label="Contratos"
+        android:label="@string/contrato"
         tools:layout="@layout/fragment_contrato">
         <action
             android:id="@+id/action_nav_contrato_to_detalleContratoFragment"
@@ -59,7 +54,7 @@
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.inmobiliariabenito.ui.salir.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/salir"
         tools:layout="@layout/fragment_slideshow" />
 
     <!-- 🏡 Detalle Inmueble -->
@@ -80,22 +75,41 @@
         android:label="Detalle del Contrato"
         tools:layout="@layout/fragment_detalle_contrato">
         <action
-            android:id="@+id/action_detalleContratoFragment_to_nav_detalle_inquilino"
-            app:destination="@id/nav_detalle_inquilino" />
+            android:id="@+id/action_detalleContratoFragment_to_nav_contrato"
+            app:destination="@id/nav_contrato" />
+        <action
+            android:id="@+id/action_detalleContratoFragment_to_detalleInquilinoFragment"
+            app:destination="@id/detalleInquilinoFragment" />
+        <action
+            android:id="@+id/action_detalleContratoFragment_to_detallePagoFragment"
+            app:destination="@id/detallePagoFragment" />
     </fragment>
 
     <!-- 👥 Detalle Inquilino -->
     <fragment
-        android:id="@+id/nav_detalle_inquilino"
+        android:id="@+id/detalleInquilinoFragment"
         android:name="com.example.inmobiliariabenito.ui.inquilino.DetalleInquilinoFragment"
         android:label="Detalle del Inquilino"
-        tools:layout="@layout/fragment_detalle_inquilino" />
+        tools:layout="@layout/fragment_detalle_inquilino" >
+        <action
+            android:id="@+id/action_detalleInquilinoFragment_to_detalleContratoFragment"
+            app:destination="@id/detalleContratoFragment" />
+    </fragment>
 
-    <!-- 🔐 Login -->
+    <!-- 🔐 Login (Activity, no fragmento) -->
     <activity
         android:id="@+id/loginActivity"
         android:name="com.example.inmobiliariabenito.ui.login.LoginActivity"
         android:label="Login"
         tools:layout="@layout/activity_login" />
+    <fragment
+        android:id="@+id/detallePagoFragment"
+        android:name="com.example.inmobiliariabenito.ui.inquilino.DetallePagoFragment"
+        android:label="Detalle Pagos"
+        tools:layout="@layout/fragment_detalle_pago" >
+        <action
+            android:id="@+id/action_detallePagoFragment_to_detalleContratoFragment"
+            app:destination="@id/detalleContratoFragment" />
+    </fragment>
 
 </navigation>

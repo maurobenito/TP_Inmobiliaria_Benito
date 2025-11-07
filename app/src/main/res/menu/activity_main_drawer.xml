@@ -13,10 +13,7 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/inmueble" />
 
-        <item
-            android:id="@+id/nav_inquilino"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/inquilino" />
+
 
         <item
             android:id="@+id/nav_contrato"

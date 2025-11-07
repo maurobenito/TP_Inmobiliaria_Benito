@@ -20,6 +20,20 @@ public class Inmueble implements Serializable {
     private int idPropietario;
     private Propietario duenio;
 
+    public Inmueble(Inquilino inquilino) {
+        this.inquilino = inquilino;
+    }
+
+    public Inquilino getInquilino() {
+        return inquilino;
+    }
+
+    public void setInquilino(Inquilino inquilino) {
+        this.inquilino = inquilino;
+    }
+
+    private Inquilino inquilino;
+
     public Inmueble(Contrato contrato) {
         this.contrato = contrato;
     }

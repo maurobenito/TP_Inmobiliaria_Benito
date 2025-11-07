@@ -23,25 +23,65 @@ public class DetalleContratoFragment extends Fragment {
 
     private FragmentDetalleContratoBinding binding;
     private DetalleContratoViewModel vm;
+    private Contrato contratoActual; // 👈 guardamos el contrato que llega
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentDetalleContratoBinding.inflate(inflater, container, false);
         vm = new ViewModelProvider(this).get(DetalleContratoViewModel.class);
 
-        vm.getContrato().observe(getViewLifecycleOwner(), new Observer<Contrato>() {
-            @Override
-            public void onChanged(Contrato contrato) {
-                binding.tvFechaInicio.setText(contrato.getFechaInicio());
-                binding.tvFechaFin.setText(contrato.getFechaFinalizacion());
-                binding.tvMonto.setText(String.valueOf(contrato.getMontoAlquiler()));
+        int idInmueble = requireArguments().getInt("idInmueble");
+
+
+        vm.getContrato().observe(getViewLifecycleOwner(), contrato -> {
+            if (contrato != null) {
+                contratoActual = contrato; // 👈 lo guardamos
+
+                String fechaInicioFormateada = contrato.getFechaInicio().substring(8, 10) + "/" +
+                        contrato.getFechaInicio().substring(5, 7) + "/" +
+                        contrato.getFechaInicio().substring(0, 4);
+
+                String fechaFinFormateada = contrato.getFechaFinalizacion().substring(8, 10) + "/" +
+                        contrato.getFechaFinalizacion().substring(5, 7) + "/" +
+                        contrato.getFechaFinalizacion().substring(0, 4);
+
+                binding.tvFechaInicio.setText(fechaInicioFormateada);
+                binding.tvFechaFin.setText(fechaFinFormateada);
+
+
+                binding.tvMonto.setText("$ " + String.format("%.2f", contrato.getMontoAlquiler()));
+
                 binding.tvInquilino.setText(contrato.getInquilino().getNombre() + " " + contrato.getInquilino().getApellido());
+                binding.tvInmueble.setText(contrato.getInmueble().getDireccion());
 
 
-                String url = ApiClient.BASE_URL + contrato.getInmueble().getImagen().replace("\\", "/");
+
+                binding.btnVerInquilino.setOnClickListener(v -> {
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("contrato", contratoActual);
+                    Navigation.findNavController(v).navigate(R.id.detalleInquilinoFragment, bundle);
+                });
+
+                binding.btnVerPagos.setOnClickListener(v -> {
+                    Bundle bundlePagos = new Bundle();
+                    bundlePagos.putInt("idContrato", contratoActual.getIdContrato());
+                    Navigation.findNavController(v).navigate(R.id.detallePagoFragment, bundlePagos);
+                });
+
+                binding.btnVolver.setOnClickListener(v -> {
+                    Navigation.findNavController(v).popBackStack();
+                });
+
+
+
+
+
 
             }
         });
+
+
+
 
         vm.obtenerContratoPorInmueble(getArguments());
 
