@@ -21,10 +21,10 @@ public class DetalleInquilinoFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentDetalleInquilinoBinding.inflate(inflater, container, false);
 
-        // Recibimos el contrato directamente del bundle
+
         Contrato contratoActual = (Contrato) requireArguments().getSerializable("contrato");
 
-        // Mostramos los datos del inquilino directamente, sin if
+
         binding.etNombre.setText(contratoActual.getInquilino().getNombre());
         binding.etApellido.setText(contratoActual.getInquilino().getApellido());
         binding.etDni.setText(String.valueOf(contratoActual.getInquilino().getDni()));

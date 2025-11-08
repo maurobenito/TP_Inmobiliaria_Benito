@@ -37,7 +37,7 @@ public class DetallePagoFragment extends Fragment {
 
         vm.getPagos().observe(getViewLifecycleOwner(), pagos -> adapter.actualizarLista(pagos));
 
-        // Botón Volver sin if
+
         binding.btnVolverPagos.setOnClickListener(v -> Navigation.findNavController(v).popBackStack());
 
         return binding.getRoot();
